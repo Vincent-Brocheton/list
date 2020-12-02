@@ -1,0 +1,17 @@
+{
+    "name": "vince/ajout-supp-js",
+    "description": "Ajouter et supprimer des \u0000l\u0000ments d'une liste en Javascript",
+    "type": "project",
+    "require": {
+        "twbs/bootstrap": "^4.5",
+        "components/jquery": "^3.5"
+    },
+    "license": "GPL 3.0",
+    "authors": [
+        {
+            "name": "Vincent.Brocheton",
+            "email": "vinc.brocheton@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
