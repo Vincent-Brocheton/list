@@ -1,50 +1,39 @@
 let tab = [];
 
 let submit = document.getElementById("submit");
-let add = document.getElementById("element-list");
+let lastName = document.getElementById("nom");
+let firstName = document.getElementById("prenom");
+let table = document.getElementById("listing");
 
-submit.addEventListener("click", (e) => {
+submit.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (add.value.trim() === "") {
-        document.getElementById("alert").textContent = "Veuillez saisir un element";
+    if (lastName.value.trim() === "" || firstName.value.trim() === "") {
+        document.getElementById("alert").textContent = "Veuillez saisir une identité correcte";
     } else {
-        addList(add.value);
+        addList(lastName.value, firstName.value);
     }
-    document.getElementById('element-list').value = "";
+    lastName.value = "";
+    firstName.value = "";
 })
 
-function addList(add) {
+function addList(valeur1, valeur2) {
+    let add = {
+        id: tab.length,
+        nom: valeur1,
+        prenom: valeur2
+    }
     tab.push(add);
     affichage();
 }
 
-function deleteList(id) {
-    tab.splice(id, 1);
-    affichage();
-}
-
 function affichage() {
-    document.getElementById("list").innerHTML = "";
-
-    let list = document.getElementById('list');
-
-    let li;
-    let button;
-
+    table.innerHTML = "";
     for (let i = 0; i < tab.length; i++) {
-        li = document.createElement('li');
-        button = document.createElement('button');
 
-        button.textContent = " - ";
+        tr = document.createElement('tr');
 
-        button.setAttribute('class', 'btn btn-danger');
-        button.setAttribute('onclick', 'deleteList(' + i + ')');
+        tr.innerHTML = `<td>` + tab[i].id + `</td><td>` + tab[i].nom + `</td><td>` + tab[i].prenom + `</td>`;
 
-        li.textContent = tab[i];
-        li.style.color = 'red';
-
-        li.appendChild(button);
-
-        list.appendChild(li);
+        table.appendChild(tr);
     }
 }
